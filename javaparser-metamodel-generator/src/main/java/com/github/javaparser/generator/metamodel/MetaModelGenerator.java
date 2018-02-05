@@ -170,10 +170,10 @@ public class MetaModelGenerator {
     }
 
     private void generateNodeMetaModels(CompilationUnit javaParserMetaModelCu, SourceRoot sourceRoot) throws NoSuchMethodException {
-        final ClassOrInterfaceDeclaration metaModelCoid = javaParserMetaModelCu.getClassByName("JavaParserMetaModel").get();
-        final NodeList<Statement> initializeNodeMetaModelsStatements = metaModelCoid.getMethodsByName("initializeNodeMetaModels").get(0).getBody().get().getStatements();
-        final NodeList<Statement> initializePropertyMetaModelsStatements = metaModelCoid.getMethodsByName("initializePropertyMetaModels").get(0).getBody().get().getStatements();
-        final NodeList<Statement> initializeConstructorParametersStatements = metaModelCoid.getMethodsByName("initializeConstructorParameters").get(0).getBody().get().getStatements();
+        final ClassOrInterfaceDeclaration metaModelCoid = javaParserMetaModelCu.getOptionalClassByName("JavaParserMetaModel").get();
+        final NodeList<Statement> initializeNodeMetaModelsStatements = metaModelCoid.getMethodsByName("initializeNodeMetaModels").get(0).getOptionalBody().get().getStatements();
+        final NodeList<Statement> initializePropertyMetaModelsStatements = metaModelCoid.getMethodsByName("initializePropertyMetaModels").get(0).getOptionalBody().get().getStatements();
+        final NodeList<Statement> initializeConstructorParametersStatements = metaModelCoid.getMethodsByName("initializeConstructorParameters").get(0).getOptionalBody().get().getStatements();
         initializeNodeMetaModelsStatements.clear();
         initializePropertyMetaModelsStatements.clear();
         initializeConstructorParametersStatements.clear();

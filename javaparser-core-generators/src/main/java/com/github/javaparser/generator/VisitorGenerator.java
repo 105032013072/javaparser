@@ -40,7 +40,7 @@ public abstract class VisitorGenerator extends Generator {
 
         final CompilationUnit compilationUnit = sourceRoot.tryToParse(pkg, visitorClassName + ".java").getResult().get();
 
-        Optional<ClassOrInterfaceDeclaration> visitorClassOptional = compilationUnit.getClassByName(visitorClassName);
+        Optional<ClassOrInterfaceDeclaration> visitorClassOptional = compilationUnit.getOptionalClassByName(visitorClassName);
         if (!visitorClassOptional.isPresent()) {
             visitorClassOptional = compilationUnit.getInterfaceByName(visitorClassName);
         }

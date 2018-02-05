@@ -50,7 +50,7 @@ class Helper {
 
     static String getPackageName(Node container) {
         if (container instanceof CompilationUnit) {
-            Optional<PackageDeclaration> p = ((CompilationUnit) container).getPackageDeclaration();
+            Optional<PackageDeclaration> p = ((CompilationUnit) container).getPackageDeclarationOptional();
             if (p.isPresent()) {
                 return p.get().getName().toString();
             }

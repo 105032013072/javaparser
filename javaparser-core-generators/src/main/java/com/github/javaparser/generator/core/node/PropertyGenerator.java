@@ -57,7 +57,7 @@ public class PropertyGenerator extends NodeGenerator {
         setter.addAndGetParameter(property.getTypeNameForSetter(), property.getName())
                 .addModifier(FINAL);
 
-        final BlockStmt body = setter.getBody().get();
+        final BlockStmt body = setter.getOptionalBody().get();
         body.getStatements().clear();
 
         if (property.isRequired()) {
@@ -91,7 +91,7 @@ public class PropertyGenerator extends NodeGenerator {
 
     private void generateGetter(BaseNodeMetaModel nodeMetaModel, ClassOrInterfaceDeclaration nodeCoid, PropertyMetaModel property) {
         final MethodDeclaration getter = new MethodDeclaration(EnumSet.of(PUBLIC), parseType(property.getTypeNameForGetter()), property.getGetterMethodName());
-        final BlockStmt body = getter.getBody().get();
+        final BlockStmt body = getter.getOptionalBody().get();
         body.getStatements().clear();
         if (property.isOptional()) {
             body.addStatement(f("return Optional.ofNullable(%s);", property.getName()));

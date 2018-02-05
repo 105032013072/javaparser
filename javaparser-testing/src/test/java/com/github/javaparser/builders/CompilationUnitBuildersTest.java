@@ -114,7 +114,7 @@ public class CompilationUnitBuildersTest {
 
     @Test
     public void testGetClassByName() {
-        assertEquals(cu.addClass("test"), cu.getClassByName("test").get());
+        assertEquals(cu.addClass("test"), cu.getOptionalClassByName("test").get());
     }
 
     @Test

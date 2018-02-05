@@ -41,7 +41,7 @@ public class Issue128 extends AbstractResolutionTest {
     public void loopOnStaticallyImportedType() throws ParseException {
         CompilationUnit cu = parseSampleWithStandardExtension("issue128/foo/Issue128");
         ClassOrInterfaceDeclaration clazz = Navigator.demandClass(cu, "JavaTest");
-        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("test").get(0).getBody().get().getStatement(0);
+        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("test").get(0).getOptionalBody().get().getStatement(0);
         MethodCallExpr methodCallExpr = (MethodCallExpr) expressionStmt.getExpression();
         JavaParserFacade javaParserFacade = JavaParserFacade.get(typeSolver);
 

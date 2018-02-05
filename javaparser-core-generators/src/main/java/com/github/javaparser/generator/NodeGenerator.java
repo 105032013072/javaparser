@@ -34,7 +34,7 @@ public abstract class NodeGenerator extends Generator {
 
     protected Pair<CompilationUnit, ClassOrInterfaceDeclaration> parseNode(BaseNodeMetaModel nodeMetaModel) {
         CompilationUnit nodeCu = sourceRoot.parse(nodeMetaModel.getPackageName(), nodeMetaModel.getTypeName() + ".java");
-        ClassOrInterfaceDeclaration nodeCoid = nodeCu.getClassByName(nodeMetaModel.getTypeName()).orElseThrow(() -> new AssertionError("Can't find class"));
+        ClassOrInterfaceDeclaration nodeCoid = nodeCu.getOptionalClassByName(nodeMetaModel.getTypeName()).orElseThrow(() -> new AssertionError("Can't find class"));
         return new Pair<>(nodeCu, nodeCoid);
     }
 

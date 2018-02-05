@@ -67,9 +67,9 @@ class CommentsInserter {
         List<Node> children = cu.getChildNodes();
 
         Comment firstComment = comments.iterator().next();
-        if (cu.getPackageDeclaration().isPresent()
+        if (cu.getPackageDeclarationOptional().isPresent()
                 && (children.isEmpty() || PositionUtils.areInOrder(
-                firstComment, cu.getPackageDeclaration().get()))) {
+                firstComment, cu.getPackageDeclarationOptional().get()))) {
             cu.setComment(firstComment);
             comments.remove(firstComment);
         }
@@ -130,7 +130,7 @@ class CommentsInserter {
                     previousComment = null;
                 }
             } else {
-                if (previousComment != null && !thing.getComment().isPresent()) {
+                if (previousComment != null && !thing.getCommentOptional().isPresent()) {
                     if (!configuration.isDoNotAssignCommentsPrecedingEmptyLines()
                             || !thereAreLinesBetween(previousComment, thing)) {
                         thing.setComment(previousComment);
@@ -180,7 +180,7 @@ class CommentsInserter {
         // The node start and end at the same line as the comment,
         // let's give to it the comment
         if (node.getBegin().get().line == lineComment.getBegin().get().line
-                && !node.getComment().isPresent()) {
+                && !node.getCommentOptional().isPresent()) {
             if (!(node instanceof Comment)) {
                 node.setComment(lineComment);
             }

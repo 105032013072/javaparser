@@ -75,7 +75,7 @@ public class NameTest {
     public void packageName() {
         CompilationUnit cu = parse("package @Abc p1.p2;");
 
-        assertThat(cu.getPackageDeclaration().get().getName().getQualifier().get().getAnnotations()).containsExactly(new MarkerAnnotationExpr("Abc"));
+        assertThat(cu.getPackageDeclarationOptional().get().getName().getQualifier().get().getAnnotations()).containsExactly(new MarkerAnnotationExpr("Abc"));
 
         assertEquals("package @Abc p1.p2;" + EOL + EOL, cu.toString());
         assertEquals("package @Abc p1.p2;" + EOL + EOL, ConcreteSyntaxModel.genericPrettyPrint(cu));

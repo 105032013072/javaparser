@@ -45,7 +45,7 @@ public class JavaSymbolSolverTest extends AbstractResolutionTest {
         CompilationUnit cu = parseSample("SymbolResolverExample");
         new JavaSymbolSolver(typeSolver).inject(cu);
 
-        MethodDeclaration methodDeclaration = cu.getClassByName("A").get().getMethods().get(0);
+        MethodDeclaration methodDeclaration = cu.getOptionalClassByName("A").get().getMethods().get(0);
         ResolvedMethodDeclaration resolvedMethodDeclaration = methodDeclaration.resolve();
         assertEquals("foo", resolvedMethodDeclaration.getName());
         assertEquals("A[]", resolvedMethodDeclaration.getReturnType().describe());
@@ -60,7 +60,7 @@ public class JavaSymbolSolverTest extends AbstractResolutionTest {
         CompilationUnit cu = parseSample("SymbolResolverExample");
         new JavaSymbolSolver(typeSolver).inject(cu);
 
-        MethodDeclaration methodDeclaration = cu.getClassByName("A").get().getMethods().get(0);
+        MethodDeclaration methodDeclaration = cu.getOptionalClassByName("A").get().getMethods().get(0);
         ResolvedType resolvedType = methodDeclaration.getType().resolve();
         assertEquals("A[]", resolvedType.describe());
     }

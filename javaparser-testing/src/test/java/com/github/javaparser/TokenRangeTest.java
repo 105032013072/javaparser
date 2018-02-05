@@ -9,6 +9,6 @@ public class TokenRangeTest {
     @Test
     public void toStringWorks() {
         CompilationUnit cu = JavaParser.parse("class X {\n\tX(){\n// hello\n}\n}");
-        assertEquals("X(){\n// hello\n}", cu.getClassByName("X").get().getDefaultConstructor().get().getTokenRange().get().toString());
+        assertEquals("X(){\n// hello\n}", cu.getOptionalClassByName("X").get().getDefaultConstructor().get().getTokenRange().get().toString());
     }
 }

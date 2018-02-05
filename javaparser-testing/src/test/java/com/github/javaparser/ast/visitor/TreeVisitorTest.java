@@ -123,7 +123,7 @@ public class TreeVisitorTest {
     @Test
     public void parents() {
         CompilationUnit cu = JavaParser.parse("class X{int x=1;}");
-        SimpleName x = cu.getClassByName("X").get().getMember(0).asFieldDeclaration().getVariable(0).getName();
+        SimpleName x = cu.getOptionalClassByName("X").get().getMember(0).asFieldDeclaration().getVariable(0).getName();
 
         Node.ParentsVisitor visitor = new Node.ParentsVisitor(x);
         assertEquals("x = 1", visitor.next().toString());

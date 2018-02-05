@@ -130,7 +130,7 @@ public class DefaultPackageTest {
         MemoryTypeSolver memoryTypeSolver = new MemoryTypeSolver();
         memoryTypeSolver.addDeclaration("B", new MyClassDeclaration("B"));
 
-        ClassOrInterfaceType jpType = JavaParser.parse(code).getClassByName("A").get().getExtendedTypes(0);
+        ClassOrInterfaceType jpType = JavaParser.parse(code).getOptionalClassByName("A").get().getExtendedTypes(0);
         ResolvedType resolvedType = JavaParserFacade.get(memoryTypeSolver).convertToUsage(jpType);
         assertEquals("B", resolvedType.asReferenceType().getQualifiedName());
     }
@@ -141,7 +141,7 @@ public class DefaultPackageTest {
         MemoryTypeSolver memoryTypeSolver = new MemoryTypeSolver();
         memoryTypeSolver.addDeclaration("B", new MyClassDeclaration("B"));
 
-        ClassOrInterfaceType jpType = JavaParser.parse(code).getClassByName("A").get().getExtendedTypes(0);
+        ClassOrInterfaceType jpType = JavaParser.parse(code).getOptionalClassByName("A").get().getExtendedTypes(0);
         ResolvedType resolvedType = JavaParserFacade.get(memoryTypeSolver).convertToUsage(jpType);
         assertEquals("B", resolvedType.asReferenceType().getQualifiedName());
     }
@@ -152,7 +152,7 @@ public class DefaultPackageTest {
         MemoryTypeSolver memoryTypeSolver = new MemoryTypeSolver();
         memoryTypeSolver.addDeclaration("B", new MyClassDeclaration("B"));
 
-        ResolvedType resolvedType = JavaParserFacade.get(memoryTypeSolver).convertToUsage(JavaParser.parse(code).getClassByName("A").get().getExtendedTypes(0));
+        ResolvedType resolvedType = JavaParserFacade.get(memoryTypeSolver).convertToUsage(JavaParser.parse(code).getOptionalClassByName("A").get().getExtendedTypes(0));
         assertEquals("B", resolvedType.asReferenceType().getQualifiedName());
     }
 }

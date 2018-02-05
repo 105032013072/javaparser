@@ -45,7 +45,7 @@ public class Issue113 extends AbstractTest {
         String pathToSourceFile = adaptPath("src/test/resources/issue113/com/foo/Widget.java");
         CompilationUnit cu = JavaParser.parse(new File(pathToSourceFile));
 
-        JavaParserClassDeclaration jssExtendedWidget = new JavaParserClassDeclaration(cu.getClassByName("Widget").get(), typeSolver);
+        JavaParserClassDeclaration jssExtendedWidget = new JavaParserClassDeclaration(cu.getOptionalClassByName("Widget").get(), typeSolver);
         ResolvedReferenceType superClass = jssExtendedWidget.getSuperClass();
         assertEquals("com.foo.base.Widget", superClass.getQualifiedName());
     }

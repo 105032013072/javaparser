@@ -51,7 +51,7 @@ public class CsmComment implements CsmElement {
 
     @Override
     public void prettyPrint(Node node, SourcePrinter printer) {
-        node.getComment().ifPresent(c -> process(c, printer));
+        node.getCommentOptional().ifPresent(c -> process(c, printer));
     }
 
 }

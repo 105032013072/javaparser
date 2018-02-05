@@ -22,21 +22,21 @@ public class ParseErrorRecoveryTest {
     @Test
     public void bodystatementSemicolonRecovery() {
         MethodDeclaration cu = parser.parse(ParseStart.CLASS_BODY, provider("int x(){X X X;}")).getResult().get().asMethodDeclaration();
-        Statement xxx = cu.getBody().get().getStatements().get(0);
+        Statement xxx = cu.getOptionalBody().get().getStatements().get(0);
         assertEquals(UNPARSABLE, xxx.getParsed());
     }
 
     @Test
     public void bodystatementClosingBraceRecovery() {
         MethodDeclaration cu = parser.parse(ParseStart.CLASS_BODY, provider("int x(){X X X}")).getResult().get().asMethodDeclaration();
-        Statement xxx = cu.getBody().get();
+        Statement xxx = cu.getOptionalBody().get();
         assertEquals(UNPARSABLE, xxx.getParsed());
     }
 
     @Test
     public void labeledStatementSemicolonRecovery() {
         CompilationUnit cu = parser.parse(ParseStart.COMPILATION_UNIT, provider("class X{int x(){aaa:X X X;}}")).getResult().get();
-        LabeledStmt xxx = cu.getClassByName("X").get().getMethods().get(0).getBody().get().getStatements().get(0).asLabeledStmt();
+        LabeledStmt xxx = cu.getOptionalClassByName("X").get().getMethods().get(0).getOptionalBody().get().getStatements().get(0).asLabeledStmt();
         assertEquals(UNPARSABLE, xxx.getStatement().getParsed());
     }
 }

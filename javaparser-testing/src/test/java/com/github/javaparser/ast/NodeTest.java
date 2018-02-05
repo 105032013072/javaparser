@@ -63,15 +63,15 @@ public class NodeTest {
 
         assertEquals(Arrays.asList(), changes);
 
-        cu.getClassByName("A").get().setName("MyCoolClass");
+        cu.getOptionalClassByName("A").get().setName("MyCoolClass");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
+        cu.getOptionalClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
                 "FieldDeclaration.maximum_common_type changed from int to boolean",
                 "VariableDeclarator.type changed from int to boolean"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
+        cu.getOptionalClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
                 "FieldDeclaration.maximum_common_type changed from int to boolean",
                 "VariableDeclarator.type changed from int to boolean",
@@ -89,20 +89,20 @@ public class NodeTest {
                 changes.add(String.format("%s.%s changed from %s to %s", observedNode.getClass().getSimpleName(), property.name().toLowerCase(), oldValue, newValue));
             }
         };
-        cu.getClassByName("A").get().register(observer, Node.ObserverRegistrationMode.JUST_THIS_NODE);
+        cu.getOptionalClassByName("A").get().register(observer, Node.ObserverRegistrationMode.JUST_THIS_NODE);
 
         assertEquals(Arrays.asList(), changes);
 
-        cu.getClassByName("A").get().setName("MyCoolClass");
+        cu.getOptionalClassByName("A").get().setName("MyCoolClass");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
+        cu.getOptionalClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
+        cu.getOptionalClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass"), changes);
 
-        cu.getClassByName("MyCoolClass").get().addField("int", "bar").getVariables().get(0).setInitializer("0");
+        cu.getOptionalClassByName("MyCoolClass").get().addField("int", "bar").getVariables().get(0).setInitializer("0");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass"), changes);
     }
 
@@ -117,25 +117,25 @@ public class NodeTest {
                 changes.add(String.format("%s.%s changed from %s to %s", observedNode.getClass().getSimpleName(), property.name().toLowerCase(), oldValue, newValue));
             }
         };
-        cu.getClassByName("A").get().register(observer, Node.ObserverRegistrationMode.THIS_NODE_AND_EXISTING_DESCENDANTS);
+        cu.getOptionalClassByName("A").get().register(observer, Node.ObserverRegistrationMode.THIS_NODE_AND_EXISTING_DESCENDANTS);
 
         assertEquals(Arrays.asList(), changes);
 
-        cu.getClassByName("A").get().setName("MyCoolClass");
+        cu.getOptionalClassByName("A").get().setName("MyCoolClass");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
+        cu.getOptionalClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
                 "FieldDeclaration.maximum_common_type changed from int to boolean",
                 "VariableDeclarator.type changed from int to boolean"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
+        cu.getOptionalClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
                 "FieldDeclaration.maximum_common_type changed from int to boolean",
                 "VariableDeclarator.type changed from int to boolean",
                 "Parameter.name changed from p to myParam"), changes);
 
-        cu.getClassByName("MyCoolClass").get().addField("int", "bar").getVariables().get(0).setInitializer("0");
+        cu.getOptionalClassByName("MyCoolClass").get().addField("int", "bar").getVariables().get(0).setInitializer("0");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
                 "FieldDeclaration.maximum_common_type changed from int to boolean",
                 "VariableDeclarator.type changed from int to boolean",
@@ -153,25 +153,25 @@ public class NodeTest {
                 changes.add(String.format("%s.%s changed from %s to %s", observedNode.getClass().getSimpleName(), property.name().toLowerCase(), oldValue, newValue));
             }
         };
-        cu.getClassByName("A").get().register(observer, Node.ObserverRegistrationMode.SELF_PROPAGATING);
+        cu.getOptionalClassByName("A").get().register(observer, Node.ObserverRegistrationMode.SELF_PROPAGATING);
 
         assertEquals(Arrays.asList(), changes);
 
-        cu.getClassByName("A").get().setName("MyCoolClass");
+        cu.getOptionalClassByName("A").get().setName("MyCoolClass");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
+        cu.getOptionalClassByName("MyCoolClass").get().getFieldByName("f").get().getVariable(0).setType(new PrimitiveType(PrimitiveType.Primitive.BOOLEAN));
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
                 "FieldDeclaration.maximum_common_type changed from int to boolean",
                 "VariableDeclarator.type changed from int to boolean"), changes);
 
-        cu.getClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
+        cu.getOptionalClassByName("MyCoolClass").get().getMethodsByName("foo").get(0).getParameterByName("p").get().setName("myParam");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
                 "FieldDeclaration.maximum_common_type changed from int to boolean",
                 "VariableDeclarator.type changed from int to boolean",
                 "Parameter.name changed from p to myParam"), changes);
 
-        cu.getClassByName("MyCoolClass").get()
+        cu.getOptionalClassByName("MyCoolClass").get()
                 .addField("int", "bar")
                 .getVariables().get(0).setInitializer("0");
         assertEquals(Arrays.asList("ClassOrInterfaceDeclaration.name changed from A to MyCoolClass",
@@ -195,7 +195,7 @@ public class NodeTest {
         };
         cu.register(observer, Node.ObserverRegistrationMode.SELF_PROPAGATING);
 
-        cu.getClassByName("A").get().getMethodsByName("foo").get(0).getParameter(0).remove();
+        cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0).getParameter(0).remove();
         assertEquals(Arrays.asList("removing [int p] from index 0"), changes);
     }
 
@@ -214,7 +214,7 @@ public class NodeTest {
         cu.register(observer, Node.ObserverRegistrationMode.SELF_PROPAGATING);
 
         // I cannot remove the name of a type
-        assertEquals(false, cu.getClassByName("A").get().getName().remove());
+        assertEquals(false, cu.getOptionalClassByName("A").get().getName().remove());
         assertEquals(Arrays.asList(), changes);
     }
 
@@ -237,7 +237,7 @@ public class NodeTest {
         };
         cu.register(observer, Node.ObserverRegistrationMode.SELF_PROPAGATING);
 
-        assertEquals(true, cu.getClassByName("A").get().getMethodsByName("foo").get(0).getBody().get().remove());
+        assertEquals(true, cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0).getOptionalBody().get().remove());
         assertEquals(Arrays.asList("setting [BODY] to null"), changes);
     }
 
@@ -333,14 +333,14 @@ public class NodeTest {
     @Test
     public void findCompilationUnit() {
         CompilationUnit cu = parse("class X{int x;}");
-        VariableDeclarator x = cu.getClassByName("X").get().getMember(0).asFieldDeclaration().getVariables().get(0);
+        VariableDeclarator x = cu.getOptionalClassByName("X").get().getMember(0).asFieldDeclaration().getVariables().get(0);
         assertEquals(cu, x.findCompilationUnit().get());
     }
 
     @Test
     public void findParent() {
         CompilationUnit cu = parse("class X{int x;}");
-        SimpleName x = cu.getClassByName("X").get().getMember(0).asFieldDeclaration().getVariables().get(0).getName();
+        SimpleName x = cu.getOptionalClassByName("X").get().getMember(0).asFieldDeclaration().getVariables().get(0).getName();
         assertEquals("int x;", x.findParent(FieldDeclaration.class).get().toString());
     }
 

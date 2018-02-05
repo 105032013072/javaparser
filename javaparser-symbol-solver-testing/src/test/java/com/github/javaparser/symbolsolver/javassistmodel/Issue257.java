@@ -38,7 +38,7 @@ public class Issue257 extends AbstractTest {
     public void issue257() throws FileNotFoundException {
         String pathToSourceFile = adaptPath("src/test/resources/issue257/A.java.txt");
         CompilationUnit cu = JavaParser.parse(new File(pathToSourceFile));
-        Statement statement = cu.getClassByName("A").get().getMethodsByName("run").get(0).getBody().get().getStatement(0);
+        Statement statement = cu.getOptionalClassByName("A").get().getMethodsByName("run").get(0).getOptionalBody().get().getStatement(0);
         ExpressionStmt expressionStmt = (ExpressionStmt)statement;
         Expression expression = expressionStmt.getExpression();
         JavaParserFacade.get(typeSolver).getType(expression);

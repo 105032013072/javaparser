@@ -199,8 +199,16 @@ public interface NodeWithAnnotations<N extends Node> {
      *
      * @param annotationName the name of the annotation
      */
-    default Optional<AnnotationExpr> getAnnotationByName(String annotationName) {
+    default Optional<AnnotationExpr> getOptionalAnnotationByName(String annotationName) {
         return getAnnotations().stream().filter(a -> a.getName().getIdentifier().equals(annotationName)).findFirst();
+    }
+    
+    default AnnotationExpr getAnnotationByName(String annotationName){
+    	NodeList<AnnotationExpr> annotationList =getAnnotations();
+    	for (AnnotationExpr annotationExpr : annotationList) {
+			if(annotationExpr.getName().getIdentifier().equals(annotationName)) return annotationExpr;
+		}
+    	return null;
     }
 
     /**
@@ -208,7 +216,13 @@ public interface NodeWithAnnotations<N extends Node> {
      *
      * @param annotationClass the class of the annotation
      */
-    default Optional<AnnotationExpr> getAnnotationByClass(Class<? extends Annotation> annotationClass) {
-        return getAnnotationByName(annotationClass.getSimpleName());
+    default Optional<AnnotationExpr> getOptionalAnnotationByClass(Class<? extends Annotation> annotationClass) {
+        return getOptionalAnnotationByName(annotationClass.getSimpleName());
+    }
+    
+    default AnnotationExpr getAnnotationByClass(Class<? extends Annotation> annotationClass) {
+    	Optional<AnnotationExpr> optional=getOptionalAnnotationByName(annotationClass.getSimpleName());
+    	if(optional.isPresent()) return optional.get();
+    	else return null;
     }
 }

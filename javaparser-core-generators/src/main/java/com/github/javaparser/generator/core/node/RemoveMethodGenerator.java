@@ -26,7 +26,7 @@ public class RemoveMethodGenerator extends NodeGenerator {
         nodeCu.addImport(Node.class);
         nodeMetaModel.getSuperNodeMetaModel().ifPresent(s -> annotateOverridden(removeNodeMethod));
 
-        final BlockStmt body = removeNodeMethod.getBody().get();
+        final BlockStmt body = removeNodeMethod.getOptionalBody().get();
 
         body.addStatement("if (node == null) return false;");
 
@@ -78,7 +78,7 @@ public class RemoveMethodGenerator extends NodeGenerator {
         final String methodName = "remove" + capitalize(property.getName());
         final MethodDeclaration removeMethod = (MethodDeclaration) parseBodyDeclaration(f("public %s %s() {}", nodeMetaModel.getTypeName(), methodName));
 
-        final BlockStmt block = removeMethod.getBody().get();
+        final BlockStmt block = removeMethod.getOptionalBody().get();
         block.addStatement(f("return %s((%s) null);", property.getSetterMethodName(), property.getTypeNameForSetter()));
 
         addOrReplaceWhenSameSignature(nodeCoid, removeMethod);

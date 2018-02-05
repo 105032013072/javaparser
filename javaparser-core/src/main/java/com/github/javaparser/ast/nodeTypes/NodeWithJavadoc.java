@@ -32,7 +32,7 @@ import java.util.Optional;
  * A node that can be documented with a Javadoc comment.
  */
 public interface NodeWithJavadoc<N extends Node> {
-    Optional<Comment> getComment();
+    Optional<Comment> getCommentOptional();
 
     Node setComment(Comment comment);
 
@@ -43,7 +43,7 @@ public interface NodeWithJavadoc<N extends Node> {
      * @return The JavadocComment for this node wrapped in an optional as it may be absent.
      */
     default Optional<JavadocComment> getJavadocComment() {
-        return getComment()
+        return getCommentOptional()
                 .filter(comment -> comment instanceof JavadocComment)
                 .map(comment -> (JavadocComment) comment);
     }
@@ -53,8 +53,14 @@ public interface NodeWithJavadoc<N extends Node> {
      *
      * @return The Javadoc for this node wrapped in an optional as it may be absent.
      */
-    default Optional<Javadoc> getJavadoc() {
+    default Optional<Javadoc> getOptionalJavadoc() {
         return getJavadocComment().map(JavadocComment::parse);
+    }
+    
+    default Javadoc getJavadoc() {
+    	Optional<Javadoc> oj=getOptionalJavadoc();
+    	if(oj.isPresent()) return oj.get();
+    	else return null;
     }
 
     /**
@@ -78,11 +84,11 @@ public interface NodeWithJavadoc<N extends Node> {
     }
 
     default boolean removeJavaDocComment() {
-        return hasJavaDocComment() && getComment().get().remove();
+        return hasJavaDocComment() && getCommentOptional().get().remove();
     }
 
     default boolean hasJavaDocComment() {
-        return getComment().isPresent() && getComment().get() instanceof JavadocComment;
+        return getCommentOptional().isPresent() && getCommentOptional().get() instanceof JavadocComment;
     }
 
 }

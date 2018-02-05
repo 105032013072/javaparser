@@ -170,8 +170,8 @@ public class CompilationUnitContext extends AbstractJavaParserContext<Compilatio
         }
 
         // Look in current package
-        if (this.wrappedNode.getPackageDeclaration().isPresent()) {
-            String qName = this.wrappedNode.getPackageDeclaration().get().getName().toString() + "." + name;
+        if (this.wrappedNode.getPackageDeclarationOptional().isPresent()) {
+            String qName = this.wrappedNode.getPackageDeclarationOptional().get().getName().toString() + "." + name;
             SymbolReference<ResolvedReferenceTypeDeclaration> ref = typeSolver.tryToSolveType(qName);
             if (ref.isSolved()) {
                 return SymbolReference.adapt(ref, ResolvedTypeDeclaration.class);
@@ -236,8 +236,8 @@ public class CompilationUnitContext extends AbstractJavaParserContext<Compilatio
                 if(importDecl.isAsterisk()){
                     String importString = importDecl.getNameAsString();
 
-                    if (this.wrappedNode.getPackageDeclaration().isPresent()
-                            && this.wrappedNode.getPackageDeclaration().get().getName().getIdentifier().equals(packageName(importString))
+                    if (this.wrappedNode.getPackageDeclarationOptional().isPresent()
+                            && this.wrappedNode.getPackageDeclarationOptional().get().getName().getIdentifier().equals(packageName(importString))
                             && this.wrappedNode.getTypes().stream().anyMatch(it -> it.getName().getIdentifier().equals(toSimpleName(importString)))) {
                         // We are using a static import on a type defined in this file. It means the value was not found at
                         // a lower level so this will fail

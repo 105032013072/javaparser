@@ -17,7 +17,7 @@ public class ArrayExprTest {
     @Test
     public void verifyAnArrayAccessExprTypeIsCalculatedProperly() {
         String code = "class A { String[] arrSQL; String toExamine = arrSQL[1]; }";
-        FieldDeclaration field = JavaParser.parse(code).getClassByName("A").get().getFieldByName("toExamine").get();
+        FieldDeclaration field = JavaParser.parse(code).getOptionalClassByName("A").get().getFieldByName("toExamine").get();
 
         ResolvedType type = JavaParserFacade.get(new ReflectionTypeSolver()).getType(field.getVariables().get(0).getInitializer().get());
         assertEquals(true, type.isReferenceType());

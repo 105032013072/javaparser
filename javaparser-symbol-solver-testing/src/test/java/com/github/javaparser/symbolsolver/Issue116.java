@@ -45,7 +45,7 @@ public class Issue116 extends AbstractResolutionTest {
         ResolvedType type = javaParserFacade.convert(typeNode, typeNode);
         assertEquals("java.lang.String[]", type.describe());
 
-        ExpressionStmt expressionStmt = (ExpressionStmt) methodDeclaration.getBody().get().getStatements().get(0);
+        ExpressionStmt expressionStmt = (ExpressionStmt) methodDeclaration.getOptionalBody().get().getStatements().get(0);
         Expression argRef = expressionStmt.getExpression();
         assertEquals("java.lang.String[]", javaParserFacade.getType(argRef).describe());
     }

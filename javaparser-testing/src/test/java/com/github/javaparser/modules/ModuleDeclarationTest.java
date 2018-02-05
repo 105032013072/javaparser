@@ -33,7 +33,7 @@ public class ModuleDeclarationTest {
     @Test
     public void moduleInfoKeywordsAreSeenAsIdentifiers() {
         CompilationUnit cu = parse("class module { }");
-        JavaToken moduleToken = cu.getClassByName("module").get().getName().getTokenRange().get().getBegin();
+        JavaToken moduleToken = cu.getOptionalClassByName("module").get().getName().getTokenRange().get().getBegin();
         assertEquals(IDENTIFIER, moduleToken.getKind());
     }
 

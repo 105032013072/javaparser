@@ -25,7 +25,7 @@ public class ReplaceMethodGenerator extends NodeGenerator {
         nodeCu.addImport(Node.class);
         nodeMetaModel.getSuperNodeMetaModel().ifPresent(s -> annotateOverridden(replaceNodeMethod));
 
-        final BlockStmt body = replaceNodeMethod.getBody().get();
+        final BlockStmt body = replaceNodeMethod.getOptionalBody().get();
 
         body.addStatement("if (node == null) return false;");
 

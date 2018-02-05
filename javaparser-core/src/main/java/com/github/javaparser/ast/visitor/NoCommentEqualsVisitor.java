@@ -97,7 +97,7 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
             return false;
         if (!nodeEquals(n.getModule(), n2.getModule()))
             return false;
-        if (!nodeEquals(n.getPackageDeclaration(), n2.getPackageDeclaration()))
+        if (!nodeEquals(n.getPackageDeclarationOptional(), n2.getPackageDeclarationOptional()))
             return false;
         if (!nodesEquals(n.getTypes(), n2.getTypes()))
             return false;
@@ -282,7 +282,7 @@ public class NoCommentEqualsVisitor implements GenericVisitor<Boolean, Visitable
     @Generated("com.github.javaparser.generator.core.visitor.NoCommentEqualsVisitorGenerator")
     public Boolean visit(final MethodDeclaration n, final Visitable arg) {
         final MethodDeclaration n2 = (MethodDeclaration) arg;
-        if (!nodeEquals(n.getBody(), n2.getBody()))
+        if (!nodeEquals(n.getOptionalBody(), n2.getOptionalBody()))
             return false;
         if (!nodeEquals(n.getType(), n2.getType()))
             return false;

@@ -193,7 +193,7 @@ public class JavaParserFacade {
             // Attempt to resolve locally in Compilation unit
             Optional<CompilationUnit> cu = node.getAncestorOfType(CompilationUnit.class);
             if (cu.isPresent()){
-                Optional<ClassOrInterfaceDeclaration> classByName = cu.get().getClassByName(className);
+                Optional<ClassOrInterfaceDeclaration> classByName = cu.get().getOptionalClassByName(className);
                 if (classByName.isPresent()){
                     return SymbolReference.solved(getTypeDeclaration(classByName.get()));
                 }

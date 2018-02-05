@@ -26,7 +26,7 @@ public class GenericListVisitorAdapterGenerator extends VisitorGenerator {
     protected void generateVisitMethodBody(BaseNodeMetaModel node, MethodDeclaration visitMethod, CompilationUnit compilationUnit) {
         visitMethod.getParameters().forEach(p -> p.setFinal(true));
 
-        BlockStmt body = visitMethod.getBody().get();
+        BlockStmt body = visitMethod.getOptionalBody().get();
         body.getStatements().clear();
         body.addStatement("List<R> result = new ArrayList<>();");
         body.addStatement("List<R> tmp;");

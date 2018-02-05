@@ -63,7 +63,7 @@ public class ContextTest extends AbstractTest {
         CompilationUnit cu = parseSample("ReferencesToField");
         com.github.javaparser.ast.body.ClassOrInterfaceDeclaration referencesToField = Navigator.demandClass(cu, "ReferencesToField");
         MethodDeclaration method1 = Navigator.demandMethod(referencesToField, "method1");
-        ExpressionStmt stmt = (ExpressionStmt) method1.getBody().get().getStatements().get(0);
+        ExpressionStmt stmt = (ExpressionStmt) method1.getOptionalBody().get().getStatements().get(0);
         AssignExpr assignExpr = (AssignExpr) stmt.getExpression();
 
         SymbolSolver symbolSolver = new SymbolSolver(typeSolver);
@@ -79,7 +79,7 @@ public class ContextTest extends AbstractTest {
         CompilationUnit cu = parseSample("ReferencesToField");
         com.github.javaparser.ast.body.ClassOrInterfaceDeclaration referencesToField = Navigator.demandClass(cu, "ReferencesToFieldExtendingClass");
         MethodDeclaration method1 = Navigator.demandMethod(referencesToField, "method2");
-        ExpressionStmt stmt = (ExpressionStmt) method1.getBody().get().getStatements().get(0);
+        ExpressionStmt stmt = (ExpressionStmt) method1.getOptionalBody().get().getStatements().get(0);
         AssignExpr assignExpr = (AssignExpr) stmt.getExpression();
 
         SymbolSolver symbolSolver = new SymbolSolver(typeSolver);

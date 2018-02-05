@@ -174,7 +174,7 @@ public class ManipulationSteps {
         FieldAccessExpr field = new FieldAccessExpr(clazz, fieldName);
         MethodCallExpr call = new MethodCallExpr(field, methodName);
         call.addArgument(new StringLiteralExpr(stringValue));
-        method.getBody().get().addStatement(call);
+        method.getOptionalBody().get().addStatement(call);
     }
 
     @When("method $methodPosition in class $classPosition has it's name converted to uppercase")

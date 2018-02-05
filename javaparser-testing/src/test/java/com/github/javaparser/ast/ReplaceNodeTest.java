@@ -11,7 +11,7 @@ public class ReplaceNodeTest {
     @Test
     public void testSimplePropertyWithGenericReplace() {
         CompilationUnit cu = parse("package x; class Y {}");
-        cu.replace(cu.getPackageDeclaration().get(), parsePackageDeclaration("package z;"));
+        cu.replace(cu.getPackageDeclarationOptional().get(), parsePackageDeclaration("package z;"));
         assertEquals(String.format("package z;%1$s" +
                 "%1$s" +
                 "class Y {%1$s" +
@@ -21,7 +21,7 @@ public class ReplaceNodeTest {
     @Test
     public void testListProperty() {
         CompilationUnit cu = parse("package x; class Y {}");
-        cu.replace(cu.getClassByName("Y").get(), parse("class B{int y;}").getClassByName("B").get());
+        cu.replace(cu.getOptionalClassByName("Y").get(), parse("class B{int y;}").getOptionalClassByName("B").get());
         assertEquals(String.format("package x;%1$s" +
                 "%1$s" +
                 "class B {%1$s" +

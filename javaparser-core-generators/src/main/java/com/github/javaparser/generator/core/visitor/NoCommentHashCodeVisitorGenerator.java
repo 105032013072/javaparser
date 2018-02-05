@@ -46,7 +46,7 @@ public class NoCommentHashCodeVisitorGenerator extends VisitorGenerator {
                                            CompilationUnit compilationUnit) {
         visitMethod.getParameters().forEach(p -> p.setFinal(true));
 
-        final BlockStmt body = visitMethod.getBody().get();
+        final BlockStmt body = visitMethod.getOptionalBody().get();
         body.getStatements().clear();
 
         final SeparatedItemStringBuilder builder = new SeparatedItemStringBuilder("return ", "* 31 +", ";");

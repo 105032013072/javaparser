@@ -36,7 +36,7 @@ public class Issue144 extends AbstractResolutionTest {
     public void issue144() throws ParseException {
         CompilationUnit cu = parseSampleWithStandardExtension("issue144/HelloWorld");
         ClassOrInterfaceDeclaration clazz = Navigator.demandClass(cu, "HelloWorld");
-        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("main").get(0).getBody().get().getStatement(0);
+        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("main").get(0).getOptionalBody().get().getStatement(0);
         MethodCallExpr methodCallExpr = (MethodCallExpr) expressionStmt.getExpression();
         Expression firstParameter = methodCallExpr.getArgument(0);
         JavaParserFacade javaParserFacade = JavaParserFacade.get(typeSolver);
@@ -48,7 +48,7 @@ public class Issue144 extends AbstractResolutionTest {
     public void issue144WithReflectionTypeSolver() throws ParseException {
         CompilationUnit cu = parseSampleWithStandardExtension("issue144/HelloWorld");
         ClassOrInterfaceDeclaration clazz = Navigator.demandClass(cu, "HelloWorld");
-        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("main").get(0).getBody().get().getStatement(0);
+        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("main").get(0).getOptionalBody().get().getStatement(0);
         MethodCallExpr methodCallExpr = (MethodCallExpr) expressionStmt.getExpression();
         Expression firstParameter = methodCallExpr.getArgument(0);
         JavaParserFacade javaParserFacade = JavaParserFacade.get(new ReflectionTypeSolver(true));
@@ -60,7 +60,7 @@ public class Issue144 extends AbstractResolutionTest {
     public void issue144WithCombinedTypeSolver() throws ParseException {
         CompilationUnit cu = parseSampleWithStandardExtension("issue144/HelloWorld");
         ClassOrInterfaceDeclaration clazz = Navigator.demandClass(cu, "HelloWorld");
-        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("main").get(0).getBody().get().getStatement(0);
+        ExpressionStmt expressionStmt = (ExpressionStmt)clazz.getMethodsByName("main").get(0).getOptionalBody().get().getStatement(0);
         MethodCallExpr methodCallExpr = (MethodCallExpr) expressionStmt.getExpression();
         Expression firstParameter = methodCallExpr.getArgument(0);
         JavaParserFacade javaParserFacade = JavaParserFacade.get(new CombinedTypeSolver(typeSolver, new ReflectionTypeSolver(true)));

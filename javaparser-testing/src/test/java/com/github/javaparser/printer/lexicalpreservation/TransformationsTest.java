@@ -36,49 +36,49 @@ public class TransformationsTest extends  AbstractLexicalPreservingTest {
     @Test
     public void example1() throws IOException {
         considerExample("Example1_original");
-        cu.getClassByName("A").get().getFieldByName("a").get().setModifiers(EnumSet.of(Modifier.STATIC));
+        cu.getOptionalClassByName("A").get().getFieldByName("a").get().setModifiers(EnumSet.of(Modifier.STATIC));
         assertTransformed("Example1", cu);
     }
 
     @Test
     public void example2() throws IOException {
         considerExample("Example2_original");
-        cu.getClassByName("A").get().getFieldByName("a").get().getVariable(0).setInitializer("10");
+        cu.getOptionalClassByName("A").get().getFieldByName("a").get().getVariable(0).setInitializer("10");
         assertTransformed("Example2", cu);
     }
 
     @Test
     public void example3() throws IOException {
         considerExample("Example3_original");
-        cu.getClassByName("A").get().getFieldByName("a").get().getVariable(0).setInitializer((Expression) null);
+        cu.getOptionalClassByName("A").get().getFieldByName("a").get().getVariable(0).setInitializer((Expression) null);
         assertTransformed("Example3", cu);
     }
 
     @Test
     public void example5() throws IOException {
         considerExample("Example5_original");
-        cu.getClassByName("A").get().getFieldByName("a").get().getVariable(0).setInitializer(new NullLiteralExpr());
+        cu.getOptionalClassByName("A").get().getFieldByName("a").get().getVariable(0).setInitializer(new NullLiteralExpr());
         assertTransformed("Example5", cu);
     }
 
     @Test
     public void example6() throws IOException {
         considerExample("Example6_original");
-        cu.getClassByName("A").get().getFieldByName("a").get().getVariable(0).setName("someOtherName");
+        cu.getOptionalClassByName("A").get().getFieldByName("a").get().getVariable(0).setName("someOtherName");
         assertTransformed("Example6", cu);
     }
 
     @Test
     public void example7() throws IOException {
         considerExample("Example7_original");
-        cu.getClassByName("A").get().getFieldByName("a").get().getVariable(0).setType(new ArrayType(PrimitiveType.intType()));
+        cu.getOptionalClassByName("A").get().getFieldByName("a").get().getVariable(0).setType(new ArrayType(PrimitiveType.intType()));
         assertTransformed("Example7", cu);
     }
 
     @Test
     public void example8() throws IOException {
         considerExample("Example8_original");
-        FieldDeclaration fd = (FieldDeclaration) cu.getClassByName("A").get().getMember(0).asFieldDeclaration();
+        FieldDeclaration fd = (FieldDeclaration) cu.getOptionalClassByName("A").get().getMember(0).asFieldDeclaration();
         fd.addVariable(new VariableDeclarator(PrimitiveType.intType(), "b"));
         assertTransformed("Example8", cu);
     }
@@ -86,7 +86,7 @@ public class TransformationsTest extends  AbstractLexicalPreservingTest {
     @Test
     public void example9() throws IOException {
         considerExample("Example9_original");
-        FieldDeclaration fd = (FieldDeclaration) cu.getClassByName("A").get().getMember(0).asFieldDeclaration();
+        FieldDeclaration fd = (FieldDeclaration) cu.getOptionalClassByName("A").get().getMember(0).asFieldDeclaration();
         fd.addVariable(new VariableDeclarator(new ArrayType(PrimitiveType.intType()), "b"));
         assertTransformed("Example9", cu);
     }
@@ -94,14 +94,14 @@ public class TransformationsTest extends  AbstractLexicalPreservingTest {
     @Test
     public void example10() throws IOException {
         considerExample("Example10_original");
-        cu.getClassByName("A").get().getMembers().remove(0);
+        cu.getOptionalClassByName("A").get().getMembers().remove(0);
         assertTransformed("Example10", cu);
     }
 
     @Test
     public void exampleParam1() throws IOException {
         considerExample("Example_param1_original");
-        MethodDeclaration md = (MethodDeclaration) cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
+        MethodDeclaration md = (MethodDeclaration) cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
         md.addParameter("int", "p1");
         assertTransformed("Example_param1", cu);
     }
@@ -109,7 +109,7 @@ public class TransformationsTest extends  AbstractLexicalPreservingTest {
     @Test
     public void exampleParam2() throws IOException {
         considerExample("Example_param1_original");
-        MethodDeclaration md = (MethodDeclaration) cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
+        MethodDeclaration md = (MethodDeclaration) cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
         md.addParameter(new ArrayType(PrimitiveType.intType()), "p1");
         md.addParameter("char", "p2");
         assertTransformed("Example_param2", cu);
@@ -118,7 +118,7 @@ public class TransformationsTest extends  AbstractLexicalPreservingTest {
     @Test
     public void exampleParam3() throws IOException {
         considerExample("Example_param3_original");
-        MethodDeclaration md = (MethodDeclaration) cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
+        MethodDeclaration md = (MethodDeclaration) cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
         md.getParameters().remove(0);
         assertTransformed("Example_param3", cu);
     }
@@ -126,7 +126,7 @@ public class TransformationsTest extends  AbstractLexicalPreservingTest {
     @Test
     public void exampleParam4() throws IOException {
         considerExample("Example_param3_original");
-        MethodDeclaration md = (MethodDeclaration) cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
+        MethodDeclaration md = (MethodDeclaration) cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
         md.getParameters().remove(1);
         assertTransformed("Example_param4", cu);
     }
@@ -134,10 +134,10 @@ public class TransformationsTest extends  AbstractLexicalPreservingTest {
     @Test
     public void exampleParam5() throws IOException {
         considerExample("Example_param3_original");
-        MethodDeclaration md = (MethodDeclaration) cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
+        MethodDeclaration md = (MethodDeclaration) cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
         md.setType(PrimitiveType.intType());
         assertTransformed("Example_param5b", cu);
-        md.getBody().get().getStatements().add(new ReturnStmt(new NameExpr("p1")));
+        md.getOptionalBody().get().getStatements().add(new ReturnStmt(new NameExpr("p1")));
         assertTransformed("Example_param5", cu);
     }
 }

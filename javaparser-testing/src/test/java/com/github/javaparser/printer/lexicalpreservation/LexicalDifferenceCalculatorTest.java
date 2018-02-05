@@ -230,7 +230,7 @@ public class LexicalDifferenceCalculatorTest extends AbstractLexicalPreservingTe
         LexicalDifferenceCalculator ldc = new LexicalDifferenceCalculator();
         considerExample("ASimpleClassWithMoreFormatting_step3");
 
-        MethodDeclaration setter = cu.getClassByName("MyRenamedClass").get()
+        MethodDeclaration setter = cu.getOptionalClassByName("MyRenamedClass").get()
                 .getMethodsByName("setAField").get(0);
         Statement assignStatement = new ExpressionStmt(
                 new AssignExpr(
@@ -242,7 +242,7 @@ public class LexicalDifferenceCalculatorTest extends AbstractLexicalPreservingTe
                 ldc.calculatedSyntaxModelAfterListAddition(
                         ConcreteSyntaxModel.forClass(BlockStmt.class),
                         ObservableProperty.STATEMENTS,
-                        setter.getBody().get().getStatements(),
+                        setter.getOptionalBody().get().getStatements(),
                         0,
                         assignStatement);
         int index = 0;
@@ -261,7 +261,7 @@ public class LexicalDifferenceCalculatorTest extends AbstractLexicalPreservingTe
         LexicalDifferenceCalculator ldc = new LexicalDifferenceCalculator();
         considerExample("ASimpleClassWithMoreFormatting_step3");
 
-        MethodDeclaration setter = cu.getClassByName("MyRenamedClass").get()
+        MethodDeclaration setter = cu.getOptionalClassByName("MyRenamedClass").get()
                 .getMethodsByName("setAField").get(0);
         Statement assignStatement = new ExpressionStmt(
                 new AssignExpr(
@@ -271,7 +271,7 @@ public class LexicalDifferenceCalculatorTest extends AbstractLexicalPreservingTe
                 ));
         Difference diff = ldc.calculateListAdditionDifference(
                 ObservableProperty.STATEMENTS,
-                setter.getBody().get().getStatements(),
+                setter.getOptionalBody().get().getStatements(),
                 0,
                 assignStatement);
         int index = 0;

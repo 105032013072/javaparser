@@ -169,10 +169,13 @@ public final class CompilationUnit extends Node {
      * @return the package declaration or <code>none</code>
      */
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public Optional<PackageDeclaration> getPackageDeclaration() {
+    public Optional<PackageDeclaration> getPackageDeclarationOptional() {
         return Optional.ofNullable(packageDeclaration);
     }
 
+    public PackageDeclaration getPackageDeclaration(){
+    	return this.packageDeclaration;
+    }
     /**
      * Return the list of top level types declared in this compilation unit.<br>
      * If there are no types declared, <code>none</code> is returned.
@@ -445,9 +448,20 @@ public final class CompilationUnit extends Node {
      *
      * @param className the class name (case-sensitive)
      */
-    public Optional<ClassOrInterfaceDeclaration> getClassByName(String className) {
+    public Optional<ClassOrInterfaceDeclaration> getOptionalClassByName(String className) {
         return getTypes().stream().filter(type -> type.getNameAsString().equals(className) && type instanceof ClassOrInterfaceDeclaration && !((ClassOrInterfaceDeclaration) type).isInterface()).findFirst().map(t -> (ClassOrInterfaceDeclaration) t);
     }
+    
+    public ClassOrInterfaceDeclaration getClassByName(String className) {
+ 
+    	NodeList<TypeDeclaration<?>> typeList=getTypes();
+    	for (TypeDeclaration<?> type : typeList) {
+			if(type.getNameAsString().equals(className) && type instanceof ClassOrInterfaceDeclaration && !((ClassOrInterfaceDeclaration) type).isInterface()){
+				return (ClassOrInterfaceDeclaration) type;
+			}
+		}
+    	return null;
+    } 
 
     /**
      * Try to get a top level interface declaration by its name
@@ -604,7 +618,7 @@ public final class CompilationUnit extends Node {
          * of the path) a RuntimeException is thrown.
          */
         public Path getSourceRoot() {
-            final Optional<String> pkgAsString = compilationUnit.getPackageDeclaration().map(NodeWithName::getNameAsString);
+            final Optional<String> pkgAsString = compilationUnit.getPackageDeclarationOptional().map(NodeWithName::getNameAsString);
             return pkgAsString.map(p -> Paths.get(CodeGenerationUtils.packageToPath(p))).map(pkg -> subtractPaths(getDirectory(), pkg)).orElse(getDirectory());
         }
 

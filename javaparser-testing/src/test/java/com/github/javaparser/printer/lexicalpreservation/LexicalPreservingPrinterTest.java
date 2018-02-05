@@ -40,10 +40,10 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         // CU
         assertEquals(1, getTextForNode(cu).numberOfElements());
         assertEquals(true, getTextForNode(cu).getTextElement(0) instanceof ChildTextElement);
-        assertEquals(cu.getClassByName("A").get(), ((ChildTextElement)getTextForNode(cu).getTextElement(0)).getChild());
+        assertEquals(cu.getOptionalClassByName("A").get(), ((ChildTextElement)getTextForNode(cu).getTextElement(0)).getChild());
 
         // Class
-        ClassOrInterfaceDeclaration classA = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration classA = cu.getOptionalClassByName("A").get();
         assertEquals(7, getTextForNode(classA).numberOfElements());
         assertEquals("class", getTextForNode(classA).getTextElement(0).expand());
         assertEquals(" ", getTextForNode(classA).getTextElement(1).expand());
@@ -61,7 +61,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {int i;}";
         considerCode(code);
 
-        ClassOrInterfaceDeclaration classA = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration classA = cu.getOptionalClassByName("A").get();
         FieldDeclaration fd = classA.getFieldByName("i").get();
         NodeText nodeText = LexicalPreservingPrinter.getOrCreateNodeText(fd);
         assertEquals(Arrays.asList("int", " ", "i", ";"),
@@ -73,7 +73,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {int i;}";
         considerCode(code);
 
-        ClassOrInterfaceDeclaration classA = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration classA = cu.getOptionalClassByName("A").get();
         FieldDeclaration fd = classA.getFieldByName("i").get();
         VariableDeclarator vd = fd.getVariables().get(0);
         NodeText nodeText = LexicalPreservingPrinter.getOrCreateNodeText(vd);
@@ -86,7 +86,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {void foo(int p1, float p2) { }}";
         considerCode(code);
 
-        ClassOrInterfaceDeclaration classA = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration classA = cu.getOptionalClassByName("A").get();
         MethodDeclaration md = classA.getMethodsByName("foo").get(0);
         NodeText nodeText = LexicalPreservingPrinter.getOrCreateNodeText(md);
         assertEquals(Arrays.asList("void", " ", "foo", "(", "int p1", ",", " ", "float p2", ")", " ", "{ }"),
@@ -98,7 +98,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {void foo(int p1, float p2) { }}";
         considerCode(code);
 
-        ClassOrInterfaceDeclaration classA = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration classA = cu.getOptionalClassByName("A").get();
         MethodDeclaration md = classA.getMethodsByName("foo").get(0);
         Parameter p1 = md.getParameterByName("p1").get();
         NodeText nodeText = LexicalPreservingPrinter.getOrCreateNodeText(p1);
@@ -111,7 +111,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {void foo(int p1, float p2) { }}";
         considerCode(code);
 
-        ClassOrInterfaceDeclaration classA = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration classA = cu.getOptionalClassByName("A").get();
         MethodDeclaration md = classA.getMethodsByName("foo").get(0);
         Parameter p1 = md.getParameterByName("p1").get();
         Type t = p1.getType();
@@ -136,7 +136,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {ParseResult<T> result;}";
         considerCode(code);
 
-        FieldDeclaration field = cu.getClassByName("A").get().getFieldByName("result").get();
+        FieldDeclaration field = cu.getOptionalClassByName("A").get().getFieldByName("result").get();
         Node t = field.getCommonType();
         Node t2 = field.getVariable(0).getType();
         NodeText nodeText = LexicalPreservingPrinter.getOrCreateNodeText(field);
@@ -261,7 +261,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {}";
         considerCode(code);
 
-        ClassOrInterfaceDeclaration classA = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration classA = cu.getOptionalClassByName("A").get();
         classA.addField("int", "myField");
         assertEquals("class A {" + EOL + "    int myField;"+EOL+"}", LexicalPreservingPrinter.print(classA));
     }
@@ -271,7 +271,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A {}";
         considerCode(code);
 
-        assertEquals(code, LexicalPreservingPrinter.print(cu.getClassByName("A").get()));
+        assertEquals(code, LexicalPreservingPrinter.print(cu.getOptionalClassByName("A").get()));
     }
 
     @Test
@@ -280,8 +280,8 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         considerCode(code);
 
         assertEquals(code, LexicalPreservingPrinter.print(cu));
-        assertEquals(code, LexicalPreservingPrinter.print(cu.getClassByName("A").get()));
-        assertEquals("void foo(int p  ) { return  'z'  \t; }", LexicalPreservingPrinter.print(cu.getClassByName("A").get().getMethodsByName("foo").get(0)));
+        assertEquals(code, LexicalPreservingPrinter.print(cu.getOptionalClassByName("A").get()));
+        assertEquals("void foo(int p  ) { return  'z'  \t; }", LexicalPreservingPrinter.print(cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0)));
     }
 
     @Test
@@ -289,7 +289,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class /*a comment*/ A {\t\t"+EOL+" int f;"+EOL+EOL+EOL+"         void foo(int p  ) { return  'z'  \t; }}";
         considerCode(code);
 
-        ClassOrInterfaceDeclaration c = cu.getClassByName("A").get();
+        ClassOrInterfaceDeclaration c = cu.getOptionalClassByName("A").get();
         c.getMembers().remove(0);
         assertEquals("class /*a comment*/ A {\t\t"+ EOL +
                 EOL +
@@ -301,7 +301,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A { void foo() {} }";
         considerCode(code);
 
-        MethodDeclaration m = cu.getClassByName("A").get().getMethodsByName("foo").get(0);
+        MethodDeclaration m = cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0);
         m.addParameter("float", "p1");
         assertEquals("void foo(float p1) {}", LexicalPreservingPrinter.print(m));
     }
@@ -311,7 +311,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A { void foo(char p1) {} }";
         considerCode(code);
 
-        MethodDeclaration m = cu.getClassByName("A").get().getMethodsByName("foo").get(0);
+        MethodDeclaration m = cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0);
         m.addParameter("float", "p2");
         assertEquals("void foo(char p1, float p2) {}", LexicalPreservingPrinter.print(m));
     }
@@ -321,7 +321,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A { void foo(float p1) {} }";
         considerCode(code);
 
-        MethodDeclaration m = cu.getClassByName("A").get().getMethodsByName("foo").get(0);
+        MethodDeclaration m = cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0);
         m.getParameters().remove(0);
         assertEquals("void foo() {}", LexicalPreservingPrinter.print(m));
     }
@@ -331,7 +331,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A { void foo(char p1, int p2) {} }";
         considerCode(code);
 
-        MethodDeclaration m = cu.getClassByName("A").get().getMethodsByName("foo").get(0);
+        MethodDeclaration m = cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0);
         m.getParameters().remove(0);
         assertEquals("void foo(int p2) {}", LexicalPreservingPrinter.print(m));
     }
@@ -341,7 +341,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         String code = "class A { void foo(char p1, int p2) {} }";
         considerCode(code);
 
-        MethodDeclaration m = cu.getClassByName("A").get().getMethodsByName("foo").get(0);
+        MethodDeclaration m = cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0);
         m.getParameters().remove(1);
         assertEquals("void foo(char p1) {}", LexicalPreservingPrinter.print(m));
     }
@@ -354,9 +354,9 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         Statement s = new ExpressionStmt(new BinaryExpr(
                 new IntegerLiteralExpr("10"), new IntegerLiteralExpr("2"), BinaryExpr.Operator.PLUS
         ));
-        NodeList<Statement> stmts = cu.getClassByName("A").get().getMethodsByName("foo").get(0).getBody().get().getStatements();
+        NodeList<Statement> stmts = cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0).getOptionalBody().get().getStatements();
         stmts.add(s);
-        MethodDeclaration m = cu.getClassByName("A").get().getMethodsByName("foo").get(0);
+        MethodDeclaration m = cu.getOptionalClassByName("A").get().getMethodsByName("foo").get(0);
         assertEquals("void foo(char p1, int p2) {"+EOL +
                 "    10 + 2;"+ EOL +
                 "}", LexicalPreservingPrinter.print(m));
@@ -460,7 +460,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void printAModuleInfoSpecificKeywordUsedAsIdentifier1() {
         considerCode("class module { }");
 
-        cu.getClassByName("module").get().setName("xyz");
+        cu.getOptionalClassByName("module").get().setName("xyz");
 
         assertEquals("class xyz { }", LexicalPreservingPrinter.print(cu));
     }
@@ -469,7 +469,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void printAModuleInfoSpecificKeywordUsedAsIdentifier2() {
         considerCode("class xyz { }");
 
-        cu.getClassByName("xyz").get().setName("module");
+        cu.getOptionalClassByName("xyz").get().setName("module");
 
         assertEquals("class module { }", LexicalPreservingPrinter.print(cu));
     }
@@ -529,7 +529,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
                         .forEach(member -> {
                             if (member instanceof MethodDeclaration) {
                                 MethodDeclaration methodDeclaration = (MethodDeclaration) member;
-                                if (!methodDeclaration.getAnnotationByName("Override").isPresent()) {
+                                if (!methodDeclaration.getOptionalAnnotationByName("Override").isPresent()) {
                                     methodDeclaration.addAnnotation("Override");
                                 }
                             }
@@ -554,7 +554,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void renameASimpleClassWithMoreFormatting() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting");
 
-        cu.getClassByName("ASimpleClass").get()
+        cu.getOptionalClassByName("ASimpleClass").get()
                 .setName("MyRenamedClass");
         assertEquals(readExample("ASimpleClassWithMoreFormatting_step1"), LexicalPreservingPrinter.print(cu));
     }
@@ -563,10 +563,10 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void theLexicalPreservationStringForAnAddedMethodShouldBeIndented() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting");
 
-        cu.getClassByName("ASimpleClass").get()
+        cu.getOptionalClassByName("ASimpleClass").get()
                 .setName("MyRenamedClass");
         MethodDeclaration setter = cu
-                .getClassByName("MyRenamedClass").get()
+                .getOptionalClassByName("MyRenamedClass").get()
                 .addMethod("setAField", Modifier.PUBLIC);
         assertEquals("public void setAField() {" + EOL +
                 "    }", LexicalPreservingPrinter.print(setter));
@@ -576,10 +576,10 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void addMethodToASimpleClassWithMoreFormatting() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting");
 
-        cu.getClassByName("ASimpleClass").get()
+        cu.getOptionalClassByName("ASimpleClass").get()
                 .setName("MyRenamedClass");
         MethodDeclaration setter = cu
-                .getClassByName("MyRenamedClass").get()
+                .getOptionalClassByName("MyRenamedClass").get()
                 .addMethod("setAField", Modifier.PUBLIC);
         assertEquals(readExample("ASimpleClassWithMoreFormatting_step2"), LexicalPreservingPrinter.print(cu));
     }
@@ -588,10 +588,10 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void addingParameterToAnAddedMethodInASimpleClassWithMoreFormatting() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting");
 
-        cu.getClassByName("ASimpleClass").get()
+        cu.getOptionalClassByName("ASimpleClass").get()
                 .setName("MyRenamedClass");
         MethodDeclaration setter = cu
-                .getClassByName("MyRenamedClass").get()
+                .getOptionalClassByName("MyRenamedClass").get()
                 .addMethod("setAField", Modifier.PUBLIC);
         setter.addParameter("boolean", "aField");
         assertEquals(readExample("ASimpleClassWithMoreFormatting_step3"), LexicalPreservingPrinter.print(cu));
@@ -601,34 +601,34 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void findIndentationOfEmptyMethod() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting_step3");
 
-        MethodDeclaration setter = cu.getClassByName("MyRenamedClass").get()
+        MethodDeclaration setter = cu.getOptionalClassByName("MyRenamedClass").get()
                 .getMethodsByName("setAField").get(0);
         assertEquals(4, LexicalPreservingPrinter.findIndentation(setter).size());
-        assertEquals(4, LexicalPreservingPrinter.findIndentation(setter.getBody().get()).size());
+        assertEquals(4, LexicalPreservingPrinter.findIndentation(setter.getOptionalBody().get()).size());
     }
 
     @Test
     public void findIndentationOfMethodWithStatements() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting_step4");
 
-        MethodDeclaration setter = cu.getClassByName("MyRenamedClass").get()
+        MethodDeclaration setter = cu.getOptionalClassByName("MyRenamedClass").get()
                 .getMethodsByName("setAField").get(0);
         assertEquals(4, LexicalPreservingPrinter.findIndentation(setter).size());
-        assertEquals(4, LexicalPreservingPrinter.findIndentation(setter.getBody().get()).size());
-        assertEquals(8, LexicalPreservingPrinter.findIndentation(setter.getBody().get().getStatement(0)).size());
+        assertEquals(4, LexicalPreservingPrinter.findIndentation(setter.getOptionalBody().get()).size());
+        assertEquals(8, LexicalPreservingPrinter.findIndentation(setter.getOptionalBody().get().getStatement(0)).size());
     }
 
     @Test
     public void addingStatementToAnAddedMethodInASimpleClassWithMoreFormatting() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting");
 
-        cu.getClassByName("ASimpleClass").get()
+        cu.getOptionalClassByName("ASimpleClass").get()
                 .setName("MyRenamedClass");
         MethodDeclaration setter = cu
-                .getClassByName("MyRenamedClass").get()
+                .getOptionalClassByName("MyRenamedClass").get()
                 .addMethod("setAField", Modifier.PUBLIC);
         setter.addParameter("boolean", "aField");
-        setter.getBody().get().getStatements().add(new ExpressionStmt(
+        setter.getOptionalBody().get().getStatements().add(new ExpressionStmt(
                 new AssignExpr(
                         new FieldAccessExpr(new ThisExpr(),"aField"),
                         new NameExpr("aField"),
@@ -641,9 +641,9 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void addingStatementToAnAddedMethodInASimpleClassWithMoreFormattingFromStep3() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting_step3");
 
-        MethodDeclaration setter = cu.getClassByName("MyRenamedClass").get()
+        MethodDeclaration setter = cu.getOptionalClassByName("MyRenamedClass").get()
                 .getMethodsByName("setAField").get(0);
-        setter.getBody().get().getStatements().add(new ExpressionStmt(
+        setter.getOptionalBody().get().getStatements().add(new ExpressionStmt(
                 new AssignExpr(
                         new FieldAccessExpr(new ThisExpr(),"aField"),
                         new NameExpr("aField"),
@@ -656,7 +656,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void nodeTextForMethod() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting_step4");
 
-        MethodDeclaration setter = cu.getClassByName("MyRenamedClass").get()
+        MethodDeclaration setter = cu.getOptionalClassByName("MyRenamedClass").get()
                 .getMethodsByName("setAField").get(0);
         NodeText nodeText;
 
@@ -674,7 +674,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         assertTrue(nodeText.getElements().get(index++).isChildOfClass(BlockStmt.class));
         assertEquals(index, nodeText.getElements().size());
 
-        nodeText = getTextForNode(setter.getBody().get());
+        nodeText = getTextForNode(setter.getOptionalBody().get());
         index = 0;
         assertTrue(nodeText.getElements().get(index++).isToken(GeneratedJavaParserConstants.LBRACE));
         assertTrue(nodeText.getElements().get(index++).isNewline());
@@ -695,7 +695,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         assertTrue(nodeText.getElements().get(index++).isToken(GeneratedJavaParserConstants.RBRACE));
         assertEquals(index, nodeText.getElements().size());
 
-        nodeText = getTextForNode(setter.getBody().get().getStatement(0));
+        nodeText = getTextForNode(setter.getOptionalBody().get().getStatement(0));
         index = 0;
         assertTrue(nodeText.getElements().get(index++).isChildOfClass(AssignExpr.class));
         assertTrue(nodeText.getElements().get(index++).isToken(GeneratedJavaParserConstants.SEMICOLON));
@@ -706,9 +706,9 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
     public void nodeTextForModifiedMethod() throws IOException {
         considerExample("ASimpleClassWithMoreFormatting_step3");
 
-        MethodDeclaration setter = cu.getClassByName("MyRenamedClass").get()
+        MethodDeclaration setter = cu.getOptionalClassByName("MyRenamedClass").get()
                 .getMethodsByName("setAField").get(0);
-        setter.getBody().get().getStatements().add(new ExpressionStmt(
+        setter.getOptionalBody().get().getStatements().add(new ExpressionStmt(
                 new AssignExpr(
                         new FieldAccessExpr(new ThisExpr(),"aField"),
                         new NameExpr("aField"),
@@ -730,7 +730,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         assertTrue(nodeText.getElements().get(index++).isChildOfClass(BlockStmt.class));
         assertEquals(index, nodeText.getElements().size());
 
-        nodeText = getTextForNode(setter.getBody().get());
+        nodeText = getTextForNode(setter.getOptionalBody().get());
         index = 0;
         assertTrue(nodeText.getElements().get(index++).isToken(GeneratedJavaParserConstants.LBRACE));
         assertTrue(nodeText.getElements().get(index++).isNewline());
@@ -751,7 +751,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         assertTrue(nodeText.getElements().get(index++).isToken(GeneratedJavaParserConstants.RBRACE));
         assertEquals(index, nodeText.getElements().size());
 
-        nodeText = LexicalPreservingPrinter.getOrCreateNodeText(setter.getBody().get().getStatement(0));
+        nodeText = LexicalPreservingPrinter.getOrCreateNodeText(setter.getOptionalBody().get().getStatement(0));
         index = 0;
         assertTrue(nodeText.getElements().get(index++).isChildOfClass(AssignExpr.class));
         assertTrue(nodeText.getElements().get(index++).isToken(GeneratedJavaParserConstants.SEMICOLON));
@@ -764,7 +764,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
         considerExample("MethodWithOneStatement");
 
         MethodDeclaration methodDeclaration = cu.getType(0).getMethodsByName("someMethod").get(0);
-        methodDeclaration.getBody().get().getStatements().add(new ExpressionStmt(
+        methodDeclaration.getOptionalBody().get().getStatements().add(new ExpressionStmt(
                 new VariableDeclarationExpr(
                         new VariableDeclarator(
                                 JavaParser.parseClassOrInterfaceType("String"),
@@ -795,7 +795,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
                     type.getMembers()
                             .forEach(member -> {
                                 member.ifMethodDeclaration(methodDeclaration -> {
-                                    if (methodDeclaration.getAnnotationByName("Override").isPresent()) {
+                                    if (methodDeclaration.getOptionalAnnotationByName("Override").isPresent()) {
 
                                         while (methodDeclaration.getAnnotations().isNonEmpty()) {
                                             AnnotationExpr annotationExpr = methodDeclaration.getAnnotations().get(0);
@@ -835,7 +835,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
                             .forEach(member -> {
                                 if (member instanceof MethodDeclaration) {
                                     MethodDeclaration methodDeclaration = (MethodDeclaration) member;
-                                    if (methodDeclaration.getAnnotationByName("Override").isPresent()) {
+                                    if (methodDeclaration.getOptionalAnnotationByName("Override").isPresent()) {
 
                                         while (methodDeclaration.getAnnotations().isNonEmpty()) {
                                             AnnotationExpr annotationExpr = methodDeclaration.getAnnotations().get(0);
@@ -876,7 +876,7 @@ public class LexicalPreservingPrinterTest extends AbstractLexicalPreservingTest 
                             .forEach(member -> {
                                 if (member instanceof MethodDeclaration) {
                                     MethodDeclaration methodDeclaration = (MethodDeclaration) member;
-                                    if (!methodDeclaration.getAnnotationByName("Override").isPresent()) {
+                                    if (!methodDeclaration.getOptionalAnnotationByName("Override").isPresent()) {
                                         methodDeclaration.addMarkerAnnotation("Override");
                                     }
                                 }

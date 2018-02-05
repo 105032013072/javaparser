@@ -190,8 +190,12 @@ public abstract class Node implements Cloneable, HasParentNode<Node>, Visitable,
      * @return comment property
      */
     @Generated("com.github.javaparser.generator.core.node.PropertyGenerator")
-    public Optional<Comment> getComment() {
+    public Optional<Comment> getCommentOptional() {
         return Optional.ofNullable(comment);
+    }
+    
+    public Comment getComment() {
+        return this.comment;
     }
 
     /**
@@ -356,7 +360,7 @@ public abstract class Node implements Cloneable, HasParentNode<Node>, Visitable,
         List<Comment> comments = new LinkedList<>();
         comments.addAll(getOrphanComments());
         for (Node child : getChildNodes()) {
-            child.getComment().ifPresent(comments::add);
+            child.getCommentOptional().ifPresent(comments::add);
             comments.addAll(child.getAllContainedComments());
         }
         return comments;

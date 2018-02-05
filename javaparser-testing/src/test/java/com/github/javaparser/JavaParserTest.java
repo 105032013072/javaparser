@@ -129,8 +129,8 @@ public class JavaParserTest {
                 + "    return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> c1.getKey().compareTo(c2.getKey()); " + EOL
                 + "}}";
         CompilationUnit cu = JavaParser.parse(code);
-        MethodDeclaration methodDeclaration = cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
-        ReturnStmt returnStmt = methodDeclaration.getBody().get().getStatement(0).asReturnStmt();
+        MethodDeclaration methodDeclaration = cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
+        ReturnStmt returnStmt = methodDeclaration.getOptionalBody().get().getStatement(0).asReturnStmt();
         CastExpr castExpr = returnStmt.getExpression().get().asCastExpr();
         Type type = castExpr.getType();
         assertEquals(range(3, 13, 3, 54), type.getRange().get());
@@ -143,8 +143,8 @@ public class JavaParserTest {
                 + "    return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> c1.getKey().compareTo(c2.getKey()); " + EOL
                 + "}}";
         CompilationUnit cu = JavaParser.parse(code);
-        MethodDeclaration methodDeclaration = cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
-        ReturnStmt returnStmt = methodDeclaration.getBody().get().getStatement(0).asReturnStmt();
+        MethodDeclaration methodDeclaration = cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
+        ReturnStmt returnStmt = methodDeclaration.getOptionalBody().get().getStatement(0).asReturnStmt();
         CastExpr castExpr = returnStmt.getExpression().get().asCastExpr();
         assertEquals(range(3, 12, 3, 101), castExpr.getRange().get());
     }
@@ -156,8 +156,8 @@ public class JavaParserTest {
                 + "    return (Comparator<Map.Entry<K, V>>               )(c1, c2) -> c1.getKey().compareTo(c2.getKey()); " + EOL
                 + "}}";
         CompilationUnit cu = JavaParser.parse(code);
-        MethodDeclaration methodDeclaration = cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
-        ReturnStmt returnStmt = methodDeclaration.getBody().get().getStatement(0).asReturnStmt();
+        MethodDeclaration methodDeclaration = cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
+        ReturnStmt returnStmt = methodDeclaration.getOptionalBody().get().getStatement(0).asReturnStmt();
         CastExpr castExpr = returnStmt.getExpression().get().asCastExpr();
         assertEquals(range(3, 12, 3, 101), castExpr.getRange().get());
     }
@@ -169,8 +169,8 @@ public class JavaParserTest {
                 + "    return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> c1.getKey().compareTo(c2.getKey()); " + EOL
                 + "}}";
         CompilationUnit cu = JavaParser.parse(code);
-        MethodDeclaration methodDeclaration = cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
-        ReturnStmt returnStmt = methodDeclaration.getBody().get().getStatement(0).asReturnStmt();
+        MethodDeclaration methodDeclaration = cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
+        ReturnStmt returnStmt = methodDeclaration.getOptionalBody().get().getStatement(0).asReturnStmt();
         CastExpr castExpr = returnStmt.getExpression().get().asCastExpr();
         LambdaExpr lambdaExpr = castExpr.getExpression().asLambdaExpr();
         assertEquals(range(3, 56, 3, 101), lambdaExpr.getRange().get());
@@ -185,8 +185,8 @@ public class JavaParserTest {
                 + "    return (Comparator<Map.Entry<K, V>> & Serializable)(c1, c2) -> c1.getKey().compareTo(c2.getKey()); " + EOL
                 + "}}";
         CompilationUnit cu = JavaParser.parse(code);
-        MethodDeclaration methodDeclaration = cu.getClassByName("A").get().getMember(0).asMethodDeclaration();
-        ReturnStmt returnStmt = methodDeclaration.getBody().get().getStatement(0).asReturnStmt();
+        MethodDeclaration methodDeclaration = cu.getOptionalClassByName("A").get().getMember(0).asMethodDeclaration();
+        ReturnStmt returnStmt = methodDeclaration.getOptionalBody().get().getStatement(0).asReturnStmt();
         CastExpr castExpr = returnStmt.getExpression().get().asCastExpr();
         LambdaExpr lambdaExpr = castExpr.getExpression().asLambdaExpr();
         Statement lambdaBody = lambdaExpr.getBody();

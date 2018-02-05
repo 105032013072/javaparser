@@ -44,7 +44,7 @@ public class Issue235 extends AbstractResolutionTest{
         TypeSolver typeSolver = new ReflectionTypeSolver();
         JavaParserFacade javaParserFacade = JavaParserFacade.get(typeSolver);
         MethodDeclaration m = Navigator.demandMethod(cls, this.method);
-        ExpressionStmt stmt = (ExpressionStmt) m.getBody().get().getStatements().get(0);
+        ExpressionStmt stmt = (ExpressionStmt) m.getOptionalBody().get().getStatements().get(0);
         ObjectCreationExpr expression = (ObjectCreationExpr) stmt.getExpression();
         Assert.assertNotNull(javaParserFacade.convertToUsage(expression.getType()));
     }

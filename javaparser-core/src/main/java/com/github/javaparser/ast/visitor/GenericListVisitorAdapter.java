@@ -63,8 +63,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -95,8 +95,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -117,8 +117,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -144,8 +144,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -166,8 +166,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -183,8 +183,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -205,8 +205,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -227,8 +227,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -249,8 +249,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -271,8 +271,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -283,8 +283,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final BlockComment n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -300,8 +300,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -312,8 +312,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final BooleanLiteralExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -329,8 +329,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -351,8 +351,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -373,8 +373,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -385,8 +385,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final CharLiteralExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -402,8 +402,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -444,8 +444,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -476,8 +476,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -498,8 +498,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getPackageDeclaration().isPresent()) {
-            tmp = n.getPackageDeclaration().get().accept(this, arg);
+        if (n.getPackageDeclarationOptional().isPresent()) {
+            tmp = n.getPackageDeclarationOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -508,8 +508,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -535,8 +535,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -582,8 +582,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -599,8 +599,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -621,8 +621,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -633,8 +633,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final DoubleLiteralExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -645,8 +645,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final EmptyStmt n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -662,8 +662,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -694,8 +694,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -731,8 +731,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -758,8 +758,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -775,8 +775,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -802,8 +802,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -824,8 +824,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -856,8 +856,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -883,8 +883,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -910,8 +910,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -927,8 +927,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -949,8 +949,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -971,8 +971,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -983,8 +983,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final IntegerLiteralExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1005,8 +1005,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1017,8 +1017,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final JavadocComment n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1039,8 +1039,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1061,8 +1061,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1073,8 +1073,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final LineComment n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1090,8 +1090,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1102,8 +1102,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final LongLiteralExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1119,8 +1119,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1141,8 +1141,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1173,8 +1173,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1185,8 +1185,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final MethodDeclaration n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getBody().isPresent()) {
-            tmp = n.getBody().get().accept(this, arg);
+        if (n.getOptionalBody().isPresent()) {
+            tmp = n.getOptionalBody().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1225,8 +1225,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1247,8 +1247,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1264,8 +1264,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1286,8 +1286,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1308,8 +1308,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1320,8 +1320,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final NullLiteralExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1357,8 +1357,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1379,8 +1379,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1411,8 +1411,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1428,8 +1428,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1445,8 +1445,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1457,8 +1457,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final SimpleName n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1479,8 +1479,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1491,8 +1491,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final StringLiteralExpr n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1508,8 +1508,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1530,8 +1530,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1552,8 +1552,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1574,8 +1574,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1591,8 +1591,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1608,8 +1608,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1640,8 +1640,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1657,8 +1657,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1684,8 +1684,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1701,8 +1701,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1723,8 +1723,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1740,8 +1740,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1762,8 +1762,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1789,8 +1789,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1806,8 +1806,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1828,8 +1828,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1855,8 +1855,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1888,8 +1888,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1911,8 +1911,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1934,8 +1934,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1957,8 +1957,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1975,8 +1975,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -1993,8 +1993,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -2006,8 +2006,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
     public List<R> visit(final UnparsableStmt n, final A arg) {
         List<R> result = new ArrayList<>();
         List<R> tmp;
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }
@@ -2034,8 +2034,8 @@ public abstract class GenericListVisitorAdapter<R, A> implements GenericVisitor<
             if (tmp != null)
                 result.addAll(tmp);
         }
-        if (n.getComment().isPresent()) {
-            tmp = n.getComment().get().accept(this, arg);
+        if (n.getCommentOptional().isPresent()) {
+            tmp = n.getCommentOptional().get().accept(this, arg);
             if (tmp != null)
                 result.addAll(tmp);
         }

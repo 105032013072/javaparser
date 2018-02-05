@@ -236,7 +236,7 @@ public class ParsingSteps {
     private Statement getStatementInMethodInClass(int statementPosition, int methodPosition, int classPosition) {
         CompilationUnit compilationUnit = (CompilationUnit) state.get("cu1");
         MethodDeclaration method = getMethodByPositionAndClassPosition(compilationUnit, methodPosition, classPosition);
-        return method.getBody().get().getStatement(statementPosition - 1);
+        return method.getOptionalBody().get().getStatement(statementPosition - 1);
     }
 
     private LambdaExpr getLambdaExprInStatementInMethodInClass(int statementPosition, int methodPosition, int classPosition) {

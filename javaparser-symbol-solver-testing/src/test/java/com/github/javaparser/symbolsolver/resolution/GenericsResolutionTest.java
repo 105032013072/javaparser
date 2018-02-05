@@ -140,7 +140,7 @@ public class GenericsResolutionTest extends AbstractResolutionTest {
 
         MethodDeclaration method = Navigator.demandMethod(clazz, "foo1");
 
-        ExpressionStmt stmt = (ExpressionStmt) method.getBody().get().getStatements().get(0);
+        ExpressionStmt stmt = (ExpressionStmt) method.getOptionalBody().get().getStatements().get(0);
         Expression expression = stmt.getExpression();
         ResolvedType type = JavaParserFacade.get(new ReflectionTypeSolver()).getType(expression);
 
@@ -172,7 +172,7 @@ public class GenericsResolutionTest extends AbstractResolutionTest {
 
         MethodDeclaration method = Navigator.demandMethod(clazz, "foo2");
 
-        ExpressionStmt stmt = (ExpressionStmt) method.getBody().get().getStatements().get(0);
+        ExpressionStmt stmt = (ExpressionStmt) method.getOptionalBody().get().getStatements().get(0);
         Expression expression = stmt.getExpression();
         ResolvedType type = JavaParserFacade.get(new ReflectionTypeSolver()).getType(expression);
 

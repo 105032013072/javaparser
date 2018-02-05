@@ -49,7 +49,7 @@ public class NodeWithJavadocTest {
                 false, "Foo");
         decl.setComment(new LineComment("A comment"));
         assertEquals(false, decl.removeJavaDocComment());
-        assertTrue(decl.getComment().isPresent());
+        assertTrue(decl.getCommentOptional().isPresent());
     }
 
     @Test
@@ -58,7 +58,7 @@ public class NodeWithJavadocTest {
                 false, "Foo");
         decl.setComment(new JavadocComment("A comment"));
         assertEquals(true, decl.removeJavaDocComment());
-        assertFalse(decl.getComment().isPresent());
+        assertFalse(decl.getCommentOptional().isPresent());
     }
 
     @Test
@@ -67,7 +67,7 @@ public class NodeWithJavadocTest {
         method.setLineComment("Lorem Ipsum.");
 
         assertFalse(method.getJavadocComment().isPresent());
-        assertFalse(method.getJavadoc().isPresent());
+        assertFalse(method.getOptionalJavadoc().isPresent());
     }
 
 }

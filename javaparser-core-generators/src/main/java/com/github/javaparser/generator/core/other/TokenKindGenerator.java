@@ -31,7 +31,7 @@ public class TokenKindGenerator extends Generator {
         Log.info("Running %s", getClass().getSimpleName());
         
         final CompilationUnit javaTokenCu = sourceRoot.parse("com.github.javaparser", "JavaToken.java");
-        final ClassOrInterfaceDeclaration javaToken = javaTokenCu.getClassByName("JavaToken").orElseThrow(() -> new AssertionError("Can't find class in java file."));
+        final ClassOrInterfaceDeclaration javaToken = javaTokenCu.getOptionalClassByName("JavaToken").orElseThrow(() -> new AssertionError("Can't find class in java file."));
         final EnumDeclaration kindEnum = javaToken.findFirst(EnumDeclaration.class, e -> e.getNameAsString().equals("Kind")).orElseThrow(() -> new AssertionError("Can't find class in java file."));
 
         kindEnum.getEntries().clear();

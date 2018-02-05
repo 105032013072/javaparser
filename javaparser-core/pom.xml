@@ -25,7 +25,8 @@
     </licenses>
 
     <properties>
-        <java.version>1.8</java.version>
+    
+        <java.version>1.8</java.version> 
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
     </properties>
 
@@ -105,11 +106,11 @@
                 <groupId>biz.aQute.bnd</groupId>
                 <artifactId>bnd-maven-plugin</artifactId>
                 <executions>
-                    <execution>
+                     <execution>
                         <goals>
                             <goal>bnd-process</goal>
                         </goals>
-                    </execution>
+                    </execution> 
                 </executions>
             </plugin>
             <plugin>

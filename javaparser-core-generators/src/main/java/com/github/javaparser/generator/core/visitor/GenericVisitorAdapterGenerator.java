@@ -22,7 +22,7 @@ public class GenericVisitorAdapterGenerator extends VisitorGenerator {
     protected void generateVisitMethodBody(BaseNodeMetaModel node, MethodDeclaration visitMethod, CompilationUnit compilationUnit) {
         visitMethod.getParameters().forEach(p -> p.setFinal(true));
 
-        BlockStmt body = visitMethod.getBody().get();
+        BlockStmt body = visitMethod.getOptionalBody().get();
         body.getStatements().clear();
         
         body.addStatement("R result;");

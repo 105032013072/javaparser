@@ -99,7 +99,7 @@ public class JavaParserMethodDeclaration implements ResolvedMethodDeclaration {
 
     @Override
     public boolean isAbstract() {
-        return !wrappedNode.getBody().isPresent();
+        return !wrappedNode.getOptionalBody().isPresent();
     }
 
     @Override

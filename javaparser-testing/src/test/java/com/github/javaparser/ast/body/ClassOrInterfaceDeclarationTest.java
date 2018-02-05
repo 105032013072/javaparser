@@ -11,7 +11,7 @@ public class ClassOrInterfaceDeclarationTest {
     @Test
     public void staticNestedClass() {
         CompilationUnit cu = JavaParser.parse("class X{static class Y{}}");
-        ClassOrInterfaceDeclaration y = cu.getClassByName("X").get().getMembers().get(0).asClassOrInterfaceDeclaration();
+        ClassOrInterfaceDeclaration y = cu.getOptionalClassByName("X").get().getMembers().get(0).asClassOrInterfaceDeclaration();
 
         assertFalse(y.isInnerClass());
         assertTrue(y.isNestedType());
@@ -21,7 +21,7 @@ public class ClassOrInterfaceDeclarationTest {
     @Test
     public void nestedInterface() {
         CompilationUnit cu = JavaParser.parse("class X{interface Y{}}");
-        ClassOrInterfaceDeclaration y = cu.getClassByName("X").get().getMembers().get(0).asClassOrInterfaceDeclaration();
+        ClassOrInterfaceDeclaration y = cu.getOptionalClassByName("X").get().getMembers().get(0).asClassOrInterfaceDeclaration();
 
         assertFalse(y.isInnerClass());
         assertTrue(y.isNestedType());
@@ -31,7 +31,7 @@ public class ClassOrInterfaceDeclarationTest {
     @Test
     public void nonStaticNestedClass() {
         CompilationUnit cu = JavaParser.parse("class X{class Y{}}");
-        ClassOrInterfaceDeclaration y = cu.getClassByName("X").get().getMembers().get(0).asClassOrInterfaceDeclaration();
+        ClassOrInterfaceDeclaration y = cu.getOptionalClassByName("X").get().getMembers().get(0).asClassOrInterfaceDeclaration();
 
         assertTrue(y.isInnerClass());
         assertTrue(y.isNestedType());
@@ -41,7 +41,7 @@ public class ClassOrInterfaceDeclarationTest {
     @Test
     public void topClass() {
         CompilationUnit cu = JavaParser.parse("class X{}");
-        ClassOrInterfaceDeclaration y = cu.getClassByName("X").get();
+        ClassOrInterfaceDeclaration y = cu.getOptionalClassByName("X").get();
 
         assertFalse(y.isInnerClass());
         assertFalse(y.isNestedType());

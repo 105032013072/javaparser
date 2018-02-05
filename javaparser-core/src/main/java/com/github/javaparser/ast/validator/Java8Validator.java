@@ -12,7 +12,7 @@ public class Java8Validator extends Java7Validator {
             (n, reporter) -> {
                 if (n.isInterface()) {
                     n.getMethods().forEach(m -> {
-                        if (m.isDefault() && !m.getBody().isPresent()) {
+                        if (m.isDefault() && !m.getOptionalBody().isPresent()) {
                             reporter.report(m, "'default' methods must have a body.");
                         }
                     });
