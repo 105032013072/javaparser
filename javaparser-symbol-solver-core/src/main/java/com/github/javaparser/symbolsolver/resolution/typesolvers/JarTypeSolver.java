@@ -24,6 +24,7 @@ import javassist.CtClass;
 import javassist.NotFoundException;
 
 import java.io.*;
+import java.nio.file.Files;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
@@ -59,7 +60,7 @@ public class JarTypeSolver implements TypeSolver {
     }
 
     private File dumpToTempFile(InputStream inputStream) throws IOException {
-        File tempFile = File.createTempFile("jar_file_from_input_stream", ".jar");
+        File tempFile = Files.createTempFile("jar_file_from_input_stream", ".jar").toFile();
         tempFile.deleteOnExit();
 
         byte[] buffer = new byte[8 * 1024];
